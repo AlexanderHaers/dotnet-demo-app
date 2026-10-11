@@ -23,7 +23,6 @@ pipeline {
         }
         stage('Build and Run') {
             steps {
-                # Let op: zie waarschuwing hieronder over 'docker compose'
                 sh 'docker compose up -d --build'
             }
         }
