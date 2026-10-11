@@ -4,11 +4,13 @@ pipeline {
         stage('Build and Run') {
             steps {
                 sh '''
-                # Download de officiële docker-compose tool lokaal in de workspace
+                # Download docker-compose
                 curl -sSL "https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-x86_64" -o docker-compose
                 chmod +x docker-compose
                 
-                # Start de MariaDB en webapp met de zojuist gedownloade tool
+                ./docker-compose down || true
+                docker rm -f todoappdb todoapp || true
+
                 ./docker-compose up -d --build
                 '''
             }
