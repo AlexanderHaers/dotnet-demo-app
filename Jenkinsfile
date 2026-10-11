@@ -23,10 +23,4 @@ node {
             }
         }
     }
-    post {
-        always {
-            // Tear down the containers after the pipeline finishes so the port is freed up for the next build
-            sh 'docker compose down'
-        }
-    }
 }
