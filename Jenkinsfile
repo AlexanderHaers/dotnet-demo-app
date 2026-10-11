@@ -3,7 +3,14 @@ pipeline {
     stages {
         stage('Build and Run') {
             steps {
-                sh 'docker compose up -d --build'
+                sh '''
+                # Download de officiële docker-compose tool lokaal in de workspace
+                curl -sSL "https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-x86_64" -o docker-compose
+                chmod +x docker-compose
+                
+                # Start de MariaDB en webapp met de zojuist gedownloade tool
+                ./docker-compose up -d --build
+                '''
             }
         }
         stage('Acceptance Test') {
