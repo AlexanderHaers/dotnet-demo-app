@@ -20,7 +20,7 @@ pipeline {
                 // Wacht tot de MariaDB en webapp volledig zijn opgestart
                 sleep time: 20, unit: 'SECONDS'
                 // Test of de webapp bereikbaar is
-                sh 'curl http://172.16.0.10:8080/ | grep "Todo"'
+                sh 'curl http://172.16.0.10:8082/ | grep "Todo"'
             }
         }
     }
