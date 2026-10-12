@@ -1,4 +1,4 @@
-using MySqlConnector;
+using Npgsql;
 
 namespace TodoApp.Data;
 
@@ -18,7 +18,7 @@ public class TodoRepository
     {
         var todos = new List<Todo>();
 
-        await using var connection = new MySqlConnection(_connectionString);
+        await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
 
         await using var command = connection.CreateCommand();
@@ -39,7 +39,7 @@ public class TodoRepository
 
     public async Task AddAsync(string title)
     {
-        await using var connection = new MySqlConnection(_connectionString);
+        await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
 
         await using var command = connection.CreateCommand();
@@ -51,7 +51,7 @@ public class TodoRepository
 
     public async Task ToggleDoneAsync(int id)
     {
-        await using var connection = new MySqlConnection(_connectionString);
+        await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
 
         await using var command = connection.CreateCommand();
@@ -63,7 +63,7 @@ public class TodoRepository
 
     public async Task DeleteAsync(int id)
     {
-        await using var connection = new MySqlConnection(_connectionString);
+        await using var connection = new NpgsqlConnection(_connectionString);
         await connection.OpenAsync();
 
         await using var command = connection.CreateCommand();
