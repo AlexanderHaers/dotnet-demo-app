@@ -2,7 +2,7 @@ services:
   todoappdb:
     build:
       context: ./TodoApp
-      dockerfile: Dockerfile.db
+      dockerfile: db/Dockerfile
     container_name: todoappdb
     environment:
       POSTGRES_DB: todo_db
