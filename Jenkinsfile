@@ -8,9 +8,9 @@ pipeline {
                 curl -sSL "https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-x86_64" -o docker-compose
                 chmod +x docker-compose
                 
-                ./docker-compose down || true
+                ./docker-compose down -v || true
                 docker rm -f todoappdb todoapp || true
-
+                
                 ./docker-compose up -d --build
                 '''
             }
