@@ -28,10 +28,10 @@ public class TodoRepository
         while (await reader.ReadAsync())
         {
             todos.Add(new Todo(
-                reader.GetInt32("id"),
-                reader.GetString("title"),
-                reader.GetBoolean("is_done"),
-                reader.GetDateTime("created_at")));
+                reader.GetInt32(0),
+                reader.GetString(1),
+                reader.GetBoolean(2),
+                reader.GetDateTime(3)));
         }
 
         return todos;
